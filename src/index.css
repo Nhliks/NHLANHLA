@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #fafafb;
+    --foreground: #121316;
+    --brand: #2563eb;
+    --brand-light: #3b82f6;
+    --brand-foreground: #ffffff;
+    --card: #ffffff;
+    --card-foreground: #121316;
+    --primary: #121316;
+    --primary-foreground: #ffffff;
+    --secondary: #f3f4f6;
+    --secondary-foreground: #1e293b;
+    --muted: #f4f4f6;
+    --muted-foreground: #64748b;
+    --border: #e2e8f0;
+    --border-subtle: #edf2f7;
+    --ring: #2563eb;
+  }
+
+  .dark {
+    --background: #090a0f;
+    --foreground: #f8fafc;
+    --brand: #3b82f6;
+    --brand-light: #60a5fa;
+    --brand-foreground: #ffffff;
+    --card: #11131a;
+    --card-foreground: #f8fafc;
+    --primary: #f8fafc;
+    --primary-foreground: #090a0f;
+    --secondary: #1a1d27;
+    --secondary-foreground: #e2e8f0;
+    --muted: #161922;
+    --muted-foreground: #94a3b8;
+    --border: #232736;
+    --border-subtle: #1e2230;
+    --ring: #3b82f6;
+  }
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom subtle grid background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(100, 116, 139, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Badge dot ping */
+.badge-dot {
+  position: relative;
+  display: inline-flex;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.badge-dot .ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: var(--brand);
+  opacity: 0.75;
+  animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.badge-dot .dot {
+  position: relative;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--brand);
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
